@@ -1,1 +1,1 @@
-# fs-interview-prep
+# fullstack-bank
