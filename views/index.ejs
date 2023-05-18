@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Stack Bank</title>
+    <!-- FAVICON -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐷</text></svg>"
+    />
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- STYLE -->
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <header class="split">
+        <h1>
+          Full Stack Bank
+          <i class="fa-solid fa-piggy-bank"></i>
+        </h1>
+        <div class="create-btn-container">
+          <button type="button" id="btn-create">
+            Add Card
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <!-- QUESTIONS -->
+        <div class="card-container">
+          <!-- Loop through questions and render to DOM -->
+          <% for(let i = 0; i< questions.length; i++) { %>
+          <div class="card" id="<%= questions[i]._id %>">
+            <h3><%= questions[i].question %></h3>
+            <h4><%= questions[i].type %></h4>
+            <div class="actions-container">
+              <button type="button" class="btn-update">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+              <button type="button" class="btn-delete">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          <% } %>
+          <!-- End loop -->
+        </div>
+      </main>
+
+      <!-- MODALS -->
+      <div class="modal-container">
+        <!-- Create question -->
+        <div class="create-modal">
+          <h2>Add Flashcard</h2>
+          <form action="/createQuestion" method="POST">
+            <textarea
+              name="question"
+              id="input-question"
+              rows="2"
+              placeholder="Add question here.."
+              required
+            ></textarea>
+            <input
+              type="text"
+              placeholder="Add type here.."
+              name="type"
+              id="input-type"
+            />
+            <div class="actions-container">
+              <button type="button" class="btn-xmark">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <button type="submit" id="btn-submit">Submit</button>
+            </div>
+          </form>
+        </div>
+        <!-- Update question -->
+        <div class="update-modal">
+          <h2>Update Flashcard</h2>
+          <form action="/updateQuestion" method="PUT" id="update-form">
+            <textarea
+              name="question"
+              id="input-update-question"
+              rows="2"
+              placeholder="Add question here.."
+              required
+            ></textarea>
+            <input
+              type="text"
+              placeholder="Add type here.."
+              name="type"
+              id="input-update-type"
+            />
+            <div class="actions-container">
+              <button type="button" class="btn-xmark">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+              <button type="button" id="btn-submit-update">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/public/main.js"></script>
+  </body>
+</html>
