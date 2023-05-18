@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-require("dotenv").config();
-let dbConnectionStr = process.env.DB_STRING;
-const PORT = process.env.PORT || 3000;
 const mongodb = require("mongodb");
 const MongoClient = require("mongodb").MongoClient;
+require("dotenv").config();
+
+let dbConnectionStr = process.env.DB_STRING;
 
 MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
   .then((client) => {
@@ -75,6 +75,8 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
       }
     });
 
-    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+    app.listen(process.env.PORT, () =>
+      console.log(`Server is running on port ${PORT}`)
+    );
   })
   .catch((err) => console.log(err));
