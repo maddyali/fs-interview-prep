@@ -1,0 +1,215 @@
+/* Base Styles */
+
+:root {
+  --primary-dark: #587ef4;
+  --secondary-dark: #ff5353;
+  --primary-light: #f7f9fd;
+  --secondary-light: #e7e7e7;
+  --white: #fff;
+}
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--primary-light);
+  font-family: "Poppins", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  height: 100vh;
+}
+
+h2,
+h3,
+h4 {
+  line-height: 1;
+  text-align: center;
+}
+
+h2,
+h3,
+h4,
+p {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+button,
+input,
+textarea {
+  padding: 1rem;
+  border: none;
+  border-radius: 5px;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  resize: none;
+  transition: 0.3s;
+}
+
+form input,
+form textarea {
+  border: 1px solid var(--secondary-light);
+}
+form input:focus,
+form textarea:focus {
+  border: 1px solid #cbc9c9;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Layout */
+
+.container {
+  margin-inline: auto;
+  width: min(90%, 80.5rem);
+  height: 100%;
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+@media (min-width: 40em) {
+  .split {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.create-btn-container button {
+  font-size: 1em;
+  background-color: var(--primary-dark);
+  color: var(--white);
+  padding: 0.8rem 1.2rem;
+  font-weight: 500;
+}
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0 4rem;
+}
+
+.fa-piggy-bank {
+  color: var(--primary-dark);
+  font-size: 2.5rem;
+}
+
+/* Modal */
+
+.modal-container,
+.create-modal,
+.update-modal {
+  display: none;
+}
+
+.modal-container.active,
+.create-modal.active,
+.update-modal.active {
+  display: block;
+}
+
+.modal-container {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(102, 102, 102, 0.5);
+}
+
+.create-modal,
+.update-modal {
+  background-color: var(--white);
+  width: 80%;
+  max-width: 35rem;
+  padding: 4rem 2.5rem;
+  border-radius: 5px;
+  margin: 20% auto;
+  z-index: 3;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.create-modal button,
+.update-modal button {
+  font-size: 1em;
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  padding: 0.8rem 1.2rem;
+  font-weight: 500;
+}
+
+.create-modal .btn-xmark,
+.update-modal .btn-xmark {
+  background-color: var(--secondary-light);
+  color: black;
+}
+
+.create-modal .btn-xmark:hover,
+.update-modal .btn-xmark:hover {
+  background-color: var(--secondary-dark);
+  color: var(--white);
+}
+
+.create-modal form,
+.update-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+/* Cards */
+
+.card-container {
+  display: grid;
+  /* padding: 1.5rem; */
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.card {
+  background-color: var(--white);
+  padding: 2rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+}
+
+.card .actions-container button {
+  font-size: 12px;
+  padding: 1rem 1.2rem;
+}
+
+.card .btn-delete:hover {
+  background-color: var(--secondary-dark);
+  color: var(--white);
+}
